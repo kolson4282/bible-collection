@@ -1,7 +1,7 @@
 package biblecollection
 
 type Character struct {
-	ID          int
+	ID          string
 	Name        string
 	Description string
 	Gender      string
@@ -9,6 +9,6 @@ type Character struct {
 
 type CharacterCollection interface {
 	GetAllCharacters() []*Character
-	GetCharacterByID(charID int) (*Character, error)
+	GetCharacterByID(charID string) (*Character, error)
 	GetCharacterByName(charName string) []*Character
 }

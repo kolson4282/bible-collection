@@ -30,15 +30,15 @@ func TestGetCharacters(t *testing.T) {
 	})
 
 	t.Run("Get Character By ID", func(t *testing.T) {
-		char, err := c.GetCharacterByID(1)
+		char, err := c.GetCharacterByID("adam-1")
 		checkForError(t, err)
-		if char.ID != 1 {
-			t.Errorf("Incorrect Character passed back. Wanted 1, got %v", char.ID)
+		if char.ID != "adam-1" {
+			t.Errorf("Incorrect Character passed back. Wanted 'adam-1', got %s", char.ID)
 		}
 	})
 
 	t.Run("Error if Character Not Found", func(t *testing.T) {
-		_, err := c.GetCharacterByID(-1)
+		_, err := c.GetCharacterByID("doesnt-exist")
 		checkForNoError(t, err)
 	})
 

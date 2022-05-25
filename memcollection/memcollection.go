@@ -13,19 +13,19 @@ func NewMemoryCollection() *MemoryCollection {
 	return &MemoryCollection{
 		characters: []*biblecollection.Character{
 			{
-				ID:          1,
+				ID:          "god",
 				Name:        "God",
 				Description: "God",
 				Gender:      "none",
 			},
 			{
-				ID:          2,
+				ID:          "adam-1",
 				Name:        "Adam",
 				Description: "First Man",
 				Gender:      "male",
 			},
 			{
-				ID:          3,
+				ID:          "eve-1",
 				Name:        "Eve",
 				Description: "First Woman",
 				Gender:      "female",
