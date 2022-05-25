@@ -1,0 +1,14 @@
+enum Gender {
+  male
+  female
+  none
+}
+
+type Character {
+  id: String!
+  name: String!
+  description: String!
+  gender: Gender!
+  events: [Event!]!
+  chapters: [Chapter!]!
+}

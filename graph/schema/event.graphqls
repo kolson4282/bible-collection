@@ -1,0 +1,10 @@
+type Event {
+  id: Int!
+  actor: Character!
+  action: String!
+  receiver: Character
+  location: String!
+  book: Book!
+  chapter: Int!
+  verse: Int!
+}

@@ -1,0 +1,11 @@
+type Book {
+  id: String!
+  name: String!
+  chapters: Int!
+  events: [Event!]!
+}
+
+type Chapter {
+  book: Book!
+  chapter: Int!
+}
