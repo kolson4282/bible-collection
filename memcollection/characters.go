@@ -29,3 +29,7 @@ func (mc *MemoryCollection) GetCharacterByName(charName string) []*biblecollecti
 	}
 	return characters
 }
+
+func (mc *MemoryCollection) GetChaptersForCharacter(charID string) ([]*biblecollection.Chapter, error) {
+	return []*biblecollection.Chapter{}, nil
+}

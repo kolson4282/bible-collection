@@ -17,6 +17,7 @@ type CharacterCollection interface {
 	GetAllCharacters() []*Character
 	GetCharacterByID(charID string) (*Character, error)
 	GetCharacterByName(charName string) []*Character
+	GetChaptersForCharacter(charID string) ([]*Chapter, error)
 }
 
 type Gender string

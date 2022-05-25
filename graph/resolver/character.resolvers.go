@@ -23,7 +23,7 @@ func (r *characterResolver) Events(ctx context.Context, obj *biblecollection.Cha
 }
 
 func (r *characterResolver) Chapters(ctx context.Context, obj *biblecollection.Character) ([]*biblecollection.Chapter, error) {
-	panic(fmt.Errorf("not implemented"))
+	return r.Collection.GetChaptersForCharacter(obj.ID)
 }
 
 // Character returns generated.CharacterResolver implementation.
