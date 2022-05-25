@@ -9,4 +9,5 @@ type Book struct {
 type BookCollection interface {
 	GetAllBooks() []*Book
 	GetBookByID(bookID string) (*Book, error)
+	GetBookByName(bookName string) []*Book
 }

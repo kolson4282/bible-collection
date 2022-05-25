@@ -19,3 +19,13 @@ func (mc *MemoryCollection) GetBookByID(bookID string) (*biblecollection.Book, e
 	}
 	return nil, fmt.Errorf("no book found with id %s", bookID)
 }
+
+func (mc *MemoryCollection) GetBookByName(bookName string) []*biblecollection.Book {
+	var books []*biblecollection.Book
+	for _, book := range mc.books {
+		if strings.Contains(strings.ToLower(book.Name), bookName) {
+			books = append(books, book)
+		}
+	}
+	return books
+}
