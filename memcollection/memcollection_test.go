@@ -14,5 +14,16 @@ func TestGetCharacters(t *testing.T) {
 		if len(chars) == 0 {
 			t.Error("No Characters Returned")
 		}
+		for i, char := range chars {
+			if char.Name == "" {
+				t.Errorf("Invalid character at postion %v", i)
+			}
+			if char.Description == "" {
+				t.Errorf("Invalid description at postion %v", i)
+			}
+			if char.Gender == "" {
+				t.Errorf("Invalid gender at postion %v", i)
+			}
+		}
 	})
 }
