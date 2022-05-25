@@ -10,6 +10,7 @@ func checkForError(t testing.TB, err error) {
 		t.Fatal(err)
 	}
 }
+
 func checkForNoError(t testing.TB, err error) {
 	t.Helper()
 	if err == nil {
