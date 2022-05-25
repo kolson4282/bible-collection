@@ -1,14 +1,19 @@
 package memcollection
 
-import "github.com/kolson4282/bible-collection/biblecollection"
+import (
+	"errors"
+	"fmt"
+
+	"github.com/kolson4282/bible-collection/biblecollection"
+)
 
 type MemoryCollection struct {
-	characters []biblecollection.Character
+	characters []*biblecollection.Character
 }
 
 func NewMemoryCollection() *MemoryCollection {
 	return &MemoryCollection{
-		characters: []biblecollection.Character{
+		characters: []*biblecollection.Character{
 			{
 				ID:          1,
 				Name:        "God",
@@ -31,6 +36,15 @@ func NewMemoryCollection() *MemoryCollection {
 	}
 }
 
-func (mc *MemoryCollection) GetAllCharacters() []biblecollection.Character {
+func (mc *MemoryCollection) GetAllCharacters() []*biblecollection.Character {
 	return mc.characters
+}
+
+func (mc *MemoryCollection) GetCharacterByID(charID int) (*biblecollection.Character, error) {
+	for _, char := range mc.characters {
+		if char.ID == charID {
+			return char, nil
+		}
+	}
+	return nil, errors.New(fmt.Sprintf("Character not found with ID %d", charID))
 }

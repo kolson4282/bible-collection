@@ -26,4 +26,15 @@ func TestGetCharacters(t *testing.T) {
 			}
 		}
 	})
+	t.Run("Get Character By ID", func(t *testing.T) {
+		var c biblecollection.BibleCollection = memcollection.NewMemoryCollection()
+		char, err := c.GetCharacterByID(1)
+		if err != nil {
+			t.Fatalf("Character not found")
+		}
+		if char.ID != 1 {
+			t.Errorf("Incorrect Character passed back. Wanted 1, got %v", char.ID)
+		}
+	})
+
 }

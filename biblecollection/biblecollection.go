@@ -1,7 +1,8 @@
 package biblecollection
 
 type BibleCollection interface {
-	GetAllCharacters() []Character
+	GetAllCharacters() []*Character
+	GetCharacterByID(charID int) (*Character, error)
 }
 
 type Character struct {
