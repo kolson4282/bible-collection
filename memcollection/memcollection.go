@@ -7,6 +7,7 @@ import (
 type MemoryCollection struct {
 	characters []*biblecollection.Character
 	books      []*biblecollection.Book
+	events     []*biblecollection.Event
 }
 
 func NewMemoryCollection() *MemoryCollection {
@@ -46,6 +47,28 @@ func NewMemoryCollection() *MemoryCollection {
 				ID:       "Lev",
 				Name:     "Leviticus",
 				Chapters: 27,
+			},
+		},
+		events: []*biblecollection.Event{
+			{
+				ID:         1,
+				ActorID:    "god",
+				Action:     "created",
+				ReceiverID: "adam-1",
+				Location:   "Garden of Eden",
+				BookID:     "gen",
+				Chapter:    2,
+				Verse:      2,
+			},
+			{
+				ID:         1,
+				ActorID:    "god",
+				Action:     "created",
+				ReceiverID: "eve-1",
+				Location:   "Garden of Eden",
+				BookID:     "gen",
+				Chapter:    2,
+				Verse:      7,
 			},
 		},
 	}
