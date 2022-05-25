@@ -1,6 +1,7 @@
 package memcollection_test
 
 import (
+	"strings"
 	"testing"
 
 	"github.com/kolson4282/bible-collection/biblecollection"
@@ -8,8 +9,9 @@ import (
 )
 
 func TestGetCharacters(t *testing.T) {
+	var c biblecollection.BibleCollection = memcollection.NewMemoryCollection()
+
 	t.Run("Get All Characters", func(t *testing.T) {
-		var c biblecollection.BibleCollection = memcollection.NewMemoryCollection()
 		chars := c.GetAllCharacters()
 		if len(chars) == 0 {
 			t.Error("No Characters Returned")
@@ -26,8 +28,8 @@ func TestGetCharacters(t *testing.T) {
 			}
 		}
 	})
+
 	t.Run("Get Character By ID", func(t *testing.T) {
-		var c biblecollection.BibleCollection = memcollection.NewMemoryCollection()
 		char, err := c.GetCharacterByID(1)
 		if err != nil {
 			t.Fatalf("Character not found")
@@ -36,11 +38,28 @@ func TestGetCharacters(t *testing.T) {
 			t.Errorf("Incorrect Character passed back. Wanted 1, got %v", char.ID)
 		}
 	})
+
 	t.Run("Error if Character Not Found", func(t *testing.T) {
-		var c biblecollection.BibleCollection = memcollection.NewMemoryCollection()
 		_, err := c.GetCharacterByID(-1)
 		if err == nil {
 			t.Fatalf("Character was returned")
+		}
+	})
+
+	t.Run("Get Character By Name", func(t *testing.T) {
+		characters := c.GetCharacterByName("adam")
+		for i, char := range characters {
+			if !strings.Contains(strings.ToLower(char.Name), "adam") {
+				t.Errorf("Invalid customer. Wanted %s, got %s at position %d", "adam", char.Name, i)
+			}
+		}
+	})
+	t.Run("Get Character By Partial Name", func(t *testing.T) {
+		characters := c.GetCharacterByName("ad")
+		for i, char := range characters {
+			if !strings.Contains(strings.ToLower(char.Name), "ad") {
+				t.Errorf("Invalid customer. Wanted %s, got %s at position %d", "adam", char.Name, i)
+			}
 		}
 	})
 }
