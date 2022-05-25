@@ -36,5 +36,11 @@ func TestGetCharacters(t *testing.T) {
 			t.Errorf("Incorrect Character passed back. Wanted 1, got %v", char.ID)
 		}
 	})
-
+	t.Run("Error if Character Not Found", func(t *testing.T) {
+		var c biblecollection.BibleCollection = memcollection.NewMemoryCollection()
+		_, err := c.GetCharacterByID(-1)
+		if err == nil {
+			t.Fatalf("Character was returned")
+		}
+	})
 }

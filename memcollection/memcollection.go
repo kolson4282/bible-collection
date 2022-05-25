@@ -1,7 +1,6 @@
 package memcollection
 
 import (
-	"errors"
 	"fmt"
 
 	"github.com/kolson4282/bible-collection/biblecollection"
@@ -46,5 +45,5 @@ func (mc *MemoryCollection) GetCharacterByID(charID int) (*biblecollection.Chara
 			return char, nil
 		}
 	}
-	return nil, errors.New(fmt.Sprintf("Character not found with ID %d", charID))
+	return nil, fmt.Errorf("character not found with id %d", charID)
 }
