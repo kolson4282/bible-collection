@@ -5,7 +5,6 @@ package resolver
 
 import (
 	"context"
-	"fmt"
 
 	"github.com/kolson4282/bible-collection/biblecollection"
 	"github.com/kolson4282/bible-collection/graph/generated"
@@ -19,7 +18,7 @@ func (r *characterResolver) Gender(ctx context.Context, obj *biblecollection.Cha
 }
 
 func (r *characterResolver) Events(ctx context.Context, obj *biblecollection.Character) ([]*biblecollection.Event, error) {
-	panic(fmt.Errorf("not implemented"))
+	return r.Collection.GetEventsForCharacter(obj.ID)
 }
 
 func (r *characterResolver) Chapters(ctx context.Context, obj *biblecollection.Character) ([]*biblecollection.Chapter, error) {

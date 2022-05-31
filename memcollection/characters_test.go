@@ -60,3 +60,31 @@ func TestGetCharacters(t *testing.T) {
 		}
 	})
 }
+
+func TestGetEventsForCharacters(t *testing.T) {
+	var c biblecollection.BibleCollection = memcollection.NewMemoryCollection()
+
+	t.Run("Get All Events for a character", func(t *testing.T) {
+		events, err := c.GetEventsForCharacter("adam-1")
+		if err != nil {
+			t.Errorf("cannot get events, err: %v", err)
+		}
+		if len(events) == 0 {
+			t.Errorf("No events returned for adam-1")
+		}
+	})
+}
+
+func TestGetChaptersForCharacters(t *testing.T) {
+	var c biblecollection.BibleCollection = memcollection.NewMemoryCollection()
+
+	t.Run("Get All Chapters for a character", func(t *testing.T) {
+		chapters, err := c.GetChaptersForCharacter("adam-1")
+		if err != nil {
+			t.Errorf("cannot get chapters, err: %v", err)
+		}
+		if len(chapters) == 0 {
+			t.Errorf("No chapters returned for adam-1")
+		}
+	})
+}
