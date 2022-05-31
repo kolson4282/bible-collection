@@ -3,6 +3,7 @@ package main
 import (
 	"os"
 
+	"github.com/kolson4282/bible-collection/memcollection"
 	"github.com/kolson4282/bible-collection/server"
 )
 
@@ -13,5 +14,5 @@ func main() {
 	if port == "" {
 		port = defaultPort
 	}
-	server.StartServer(port)
+	server.StartServer(memcollection.NewMemoryCollection(), port)
 }
